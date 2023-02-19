@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scoreboard{% endblock %}
+
+{% block body %}
+	<div class="container flex">
+		<div class="w-1/2">
+			<h1 class="text-3xl font-bold underline underline-offset-2">Har din kollega varit ett arsel?</h1>
+			<p>
+				Det kan vara en pest och en pina att ha med sina motmänniskor att göra.
+			</p>
+			<h2 class="text-2xl">Gör din röst hörd!</h2>
+		</div>
+		<section data-controller="score" class="w-1/2">
+			<h2 class="text-2xl underline-offset-2">Registrera poäng</h2>
+			<form data-score-target="form" data-action="submit->score#send" class="backdrop-blur flex-col text-lg">
+				<div class="m-1.5">
+					<label>Mottagare:<br>
+						<input type="email" data-score-target="email" name="email"
+							   id="email"
+							   class="border-2 border-amber-50 bg-transparent rounded-2xl text-xl p-1 px-3"></label>
+				</div>
+				<div class="m-1.5">
+					<label>Poäng:<br>
+						<input type="number" name="points"
+							   id="points"
+							   class="border-2 border-amber-50 bg-transparent rounded-2xl text-xl p-1 px-3"></label>
+				</div>
+				<div class="m-1.5">
+					<label>Motivering:<br>
+					</label>
+					<textarea name="comment" rows="5"
+							  id="comment"
+							  class="rounded-2xl text-xl bg-transparent border-2 border-amber-50 p-1 px-3"></textarea>
+				</div>
+				<input type="submit" class="border-amber-50 border-2 rounded-3xl p-1.5 px-3">
+			</form>
+		</section>
+	</div>
+{% endblock %}
