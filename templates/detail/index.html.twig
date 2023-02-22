@@ -8,10 +8,24 @@
 			<h1 class="text-2xl">
 				Otroligt! du har <span class="underline-offset-4">tjänat</span> {{ score.points }} poäng!
 			</h1>
+			<p class="text-lg my-2">Någon har skickat {{ score.points }} till dig, vilket har ökat ditt anseende internationellt.</p>
+			{% if score.comment  %}
+				<h2 class="text-2xl">Så här motiverades beslutet:</h2>
+				<p class="text-lg">
+					{{ score.comment }}
+				</p>
+			{% endif %}
 		{% else %}
 			<h1 class="text-2xl">
 				Åh nej! Du förlorade {{ score.points }} poäng
 			</h1>
+			<p>Det är inte lätt att vara sämst, och nu ligger du rejält på minus.</p>
+			{% if score.comment  %}
+				<h2 class="text-2xl">Så här motiverades beslutet:</h2>
+				<p class="text-lg">
+					{{ score.comment }}
+				</p>
+			{% endif %}
 		{% endif %}
 	</section>
 {% endblock %}

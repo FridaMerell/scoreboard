@@ -1,7 +1,17 @@
-<h1>Nu jävlar har du skitit i det blå skåpet</h1>
-<p>
-	Någon är av den bestämda åsikten att du har klantat till det. Eller varit överjävlig.
-	Du har förlorat {{ score.points }} poäng och får nu skämmas.
-</p>
-<h2>Vill du veta mer?</h2>
-<p><a href="{{ path('app_detail', {score:score.id}) }}">Här kan du läsa mer om dina synder</a></p>
+{% if score.points > 0 %}
+	<h1>Helt otroligt, du har tjänat poäng</h1>
+	<p>
+		Grattis till {{ score.points }} vackra, fantastiska poäng.
+		Ligger du ens på minus längre?</p>
+	<a href="https://påäng.fåvitsko.se/{{ path('app_detail', {score:score.id}) }}">Läs mer här</a>
+{% else %}
+	<h1>Nu jävlar har du skitit i det blå skåpet</h1>
+	<p>
+		Någon är av den bestämda åsikten att du har klantat till det. Eller varit överjävlig.
+		Du har förlorat {{ score.points }} poäng och får nu skämmas.
+	</p>
+	<h2>Vill du veta mer?</h2>
+	<p><a href="https://påäng.fåvitsko.se/{{ path('app_detail', {score:score.id}) }}">Här kan du läsa mer om dina
+			synder</a></p>
+
+{% endif %}
