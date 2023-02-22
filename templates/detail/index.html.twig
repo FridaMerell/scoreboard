@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ score.alias }} | {{ score.points }} poäng{% endblock %}
+
+{% block body %}
+	<section class="container ">
+		{% if score.points > 0 %}
+			<h1 class="text-2xl">
+				Otroligt! du har <span class="underline-offset-4">tjänat</span> {{ score.points }} poäng!
+			</h1>
+		{% else %}
+			<h1 class="text-2xl">
+				Åh nej! Du förlorade {{ score.points }} poäng
+			</h1>
+		{% endif %}
+	</section>
+{% endblock %}

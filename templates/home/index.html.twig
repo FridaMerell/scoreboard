@@ -4,20 +4,44 @@
 
 {% block body %}
 	<div class="container flex">
-		<div class="w-1/2">
+		<div class="w-2/3">
 			<h1 class="text-3xl font-bold underline underline-offset-2">Har din kollega varit ett arsel?</h1>
 			<p>
 				Det kan vara en pest och en pina att ha med sina motmänniskor att göra.
 			</p>
-			<h2 class="text-2xl">Gör din röst hörd!</h2>
+			<hr class="divide-amber-200 my-20 mr-5">
+			<div class="my-5 flex">
+				<div class="w-1/2">
+					<h3 class="text-2xl my-2">Worst of the worst</h3>
+					<ol class="list-decimal text-xl">
+						{% for person in toplist %}
+							<li><strong>{{ person.name }}:</strong> {{ person.points }} poäng</li>
+						{% endfor %}
+					</ol>
+				</div>
+				<div class="w-1/2">
+					<h3 class="text-2xl">Senaste svin:</h3>
+					<ol class="list-decimal text-xl">
+						{% for person in latest %}
+							<li><strong>{{ person.alias }}:</strong> {{ person.points }} poäng</li>
+						{% endfor %}
+					</ol>
+				</div>
+			</div>
 		</div>
-		<section data-controller="score" class="w-1/2">
+		<section data-controller="score" class="w-1/3">
 			<h2 class="text-2xl underline-offset-2">Registrera poäng</h2>
 			<form data-score-target="form" data-action="submit->score#send" class="backdrop-blur flex-col text-lg">
 				<div class="m-1.5">
 					<label>Mottagare:<br>
 						<input type="email" data-score-target="email" name="email"
 							   id="email"
+							   class="border-2 border-amber-50 bg-transparent rounded-2xl text-xl p-1 px-3"></label>
+				</div>
+				<div class="m-1.5">
+					<label>Alias/namn:<br>
+						<input type="text" name="name"
+							   id="name"
 							   class="border-2 border-amber-50 bg-transparent rounded-2xl text-xl p-1 px-3"></label>
 				</div>
 				<div class="m-1.5">

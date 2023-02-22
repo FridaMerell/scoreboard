@@ -6,60 +6,61 @@ use App\Repository\ScoreRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ScoreRepository::class)]
-class Score
-{
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+class Score {
+	#[ORM\Id]
+	#[ORM\GeneratedValue]
+	#[ORM\Column]
+	private ?int $id = null;
+	#[ORM\Column]
+	private ?int $points = null;
+	#[ORM\Column(length: 255)]
+	private ?string $email = null;
+	#[ORM\Column(length: 255, nullable: true)]
+	private ?string $alias = null;
+	#[ORM\Column(length: 255, nullable: true)]
+	private ?string $comment = null;
 
-    #[ORM\Column]
-    private ?int $points = null;
+	public function getId(): ?int{
+		return $this->id;
+	}
 
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
+	public function getPoints(): ?int{
+		return $this->points;
+	}
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $comment = null;
+	public function setPoints(int $points): self{
+		$this->points = $points;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+		return $this;
+	}
 
-    public function getPoints(): ?int
-    {
-        return $this->points;
-    }
+	public function getEmail(): ?string{
+		return $this->email;
+	}
 
-    public function setPoints(int $points): self
-    {
-        $this->points = $points;
+	public function setEmail(string $email): self{
+		$this->email = $email;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
+	public function getAlias(): ?string{
+		return $this->alias ?? $this->email;
+	}
 
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
+	public function setAlias(string $alias): self{
+		$this->alias = $alias;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    public function getComment(): ?string
-    {
-        return $this->comment;
-    }
+	public function getComment(): ?string{
+		return $this->comment;
+	}
 
-    public function setComment(?string $comment): self
-    {
-        $this->comment = $comment;
+	public function setComment(?string $comment): self{
+		$this->comment = $comment;
 
-        return $this;
-    }
+		return $this;
+	}
 }
