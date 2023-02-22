@@ -3,15 +3,15 @@
 {% block title %}Scoreboard{% endblock %}
 
 {% block body %}
-	<div class="container flex sm:flex-col">
-		<div class="w-2/3 sm:w-full">
+	<div class="container flex flex-col lg:flex-row">
+		<div class=" w-full sm:w-2/3">
 			<h1 class="text-3xl font-bold underline underline-offset-2">Har din kollega varit ett arsel?</h1>
 			<p>
 				Det kan vara en pest och en pina att ha med sina motmänniskor att göra.
 			</p>
 			<hr class="divide-amber-200 my-20 mr-5">
-			<div class="my-5 flex sm:flex-col">
-				<div class="w-1/2 sm:w-full">
+			<div class="my-5 flex flex-col md:flex-row p-5 md:p-0">
+				<div class="md:w-1/2 w-full">
 					<h3 class="text-2xl my-2">Worst of the worst</h3>
 					<ol class="list-decimal text-xl">
 						{% for person in toplist %}
@@ -19,7 +19,7 @@
 						{% endfor %}
 					</ol>
 				</div>
-				<div class="w-1/2 sm:w-full sm:my-4">
+				<div class="md:w-1/2 w-full my-4">
 					<h3 class="text-2xl">Senaste svin:</h3>
 					<ol class="list-decimal text-xl">
 						{% for person in latest %}
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 		</div>
-		<section data-controller="score" class="w-1/3 sm:w-full sm:my-20">
+		<section data-controller="score" class="w-1/3">
 			<h2 class="text-2xl underline-offset-2">Registrera poäng</h2>
 			<form data-score-target="form" data-action="submit->score#send" class="backdrop-blur flex-col text-lg">
 				<div class="m-1.5">
