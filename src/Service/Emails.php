@@ -18,7 +18,10 @@ class Emails {
 	 */
 	function notifyLoser(Score $score): void{
 		$email = new TemplatedEmail();
+		if ($score->getPoints() < 0)
 		$email->subject('Du har förlorat poäng!');
+		else
+			$email->subject('Du har tjänat in poäng');
 		$email->htmlTemplate('emails/congrats.html.twig')
 			->context([
 						  'score' => $score

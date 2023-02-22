@@ -19,6 +19,8 @@ export default class extends Controller {
 		const formData = new FormData(this.formTarget)
 		let data = Object.fromEntries(formData)
 		const response = await axios.post('/submit', data)
+
+		location.reload()
 	}
 
 	async aCrimeIsCommitted(){
