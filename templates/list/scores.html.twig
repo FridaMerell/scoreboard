@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<ul>
+		{% for score in scores %}
+			{# @var score \App\Entity\Score #}
+			<li class="flex items-center py-2">
+				<div class="bg-gradient-to-br mr-3 min-w-[6%] align-middle">
+					<span class="text-3xl">{{ score.points }}</span>
+				</div>
+				<div>
+					<h3>{{ score.alias }}</h3>
+					<p>
+						{{ score.comment }}
+					</p>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+

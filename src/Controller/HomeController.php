@@ -19,7 +19,7 @@ class HomeController extends AbstractController {
 			->groupBy('name')
 			->orderBy('points', 'ASC')
 			->getQuery()
-			->setMaxResults(5)
+//			->setMaxResults(5)
 			->getResult();
 
 		$latest = $repository->createQueryBuilder('l')
