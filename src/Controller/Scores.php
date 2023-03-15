@@ -11,9 +11,9 @@ class Scores extends AbstractController {
 	#[Route(path: '/scores/{p}', name: 'app_scores')]
 	function index(ScoreRepository $repository, int $p = 0): Response{
 		$scores = $repository->createQueryBuilder('qb')
-			->orderBy('qb.id', 'DESC')
-			->setMaxResults(50);
-		return $this->render('list/scores.html.twig', [
+			->orderBy(sort: 'qb.id', order: 'DESC')
+			->setMaxResults(maxResults: 50);
+		return $this->render(view: 'list/scores.html.twig', parameters: [
 			'scores' => $scores->getQuery()->getResult()
 		]);
 	}
