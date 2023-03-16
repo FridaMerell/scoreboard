@@ -11,7 +11,7 @@
 		Du har förlorat {{ score.points }} poäng och får nu skämmas.
 	</p>
 	<h2>Vill du veta mer?</h2>
-	<p><a href="https://påäng.fåvitsko.se{{ path('app_detail', {score:score.id}) }}">Här kan du läsa mer om dina
+	<p><a href="{{ url('app_detail') }}">Här kan du läsa mer om dina
 			synder</a></p>
 
 {% endif %}
