@@ -6,8 +6,9 @@
 	<div class="container flex flex-col lg:flex-row">
 		<div class=" w-full sm:w-3/4">
 			<h1 class="text-3xl font-bold underline underline-offset-2">Har din kollega varit ett arsel?</h1>
+			<h2 class="text-xl my-3 font-bold">Eller har du blivit räddad ur en prekär situation?</h2>
 			<p>
-				Det kan vara en pest och en pina att ha med sina motmänniskor att göra.
+				Tvinga på andra dina åsikter!
 			</p>
 			<hr class="divide-amber-200 my-20 mr-5">
 			<div class="my-5 flex flex-col md:flex-row p-5 md:p-0">
@@ -20,10 +21,11 @@
 					</ol>
 				</div>
 				<div class="md:w-1/2 w-full my-4">
-					<h3 class="text-2xl">Senaste svin:</h3>
+					<h3 class="text-2xl">Senast hänt:</h3>
 					<ol class="list-decimal text-xl">
 						{% for person in latest %}
-							<li><strong>{{ person.alias }}:</strong> {{ person.points }} poäng <a style="margin-left:20px" href="/detail/{{person.id}}">Visa</a></li>
+							<li><strong>{{ person.alias }}:</strong> {{ person.points }} poäng <a
+										style="margin-left:20px" href="/detail/{{ person.id }}">Visa</a></li>
 						{% endfor %}
 					</ol>
 				</div>

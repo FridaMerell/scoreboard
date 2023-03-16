@@ -10,7 +10,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
 class Emails {
-	function __construct(private MailerInterface $mailer){
+	function __construct(private MailerInterface $mailer, private readonly Messages $messages){
 	}
 
 	/**
@@ -18,14 +18,25 @@ class Emails {
 	 */
 	function notifyLoser(Score $score): void{
 		$email = new TemplatedEmail();
-		if ($score->getPoints() < 0)
-		$email->subject('Du har förlorat poäng!');
-		else
+		if ($score->getPoints() < 0) {
+			$email->subject('Du har förlorat poäng!');
+			$message = $this->messages->getNegative();
+			$email->htmlTemplate('emails/congrats.html.twig')
+				->context([
+							  'score' => $score,
+							  'title' => $message->title,
+							  'message' => $message->message
+						  ]);
+		} else {
 			$email->subject('Du har tjänat in poäng');
-		$email->htmlTemplate('emails/congrats.html.twig')
-			->context([
-						  'score' => $score
-					  ]);
+			$message = $this->messages->getPositive();
+			$email->htmlTemplate('emails/congrats.html.twig')
+				->context([
+							  'score' => $score,
+							  'title' => $message->title,
+							  'message' => $message->message
+						  ]);
+		}
 
 		$email->to($score->getEmail());
 		$email->from('dumhuvud@xn--fvitsko-exa.se');
