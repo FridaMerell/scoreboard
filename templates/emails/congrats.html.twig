@@ -3,7 +3,7 @@
 	<p>
 		Grattis till {{ score.points }} vackra, fantastiska poäng.
 		Ligger du ens på minus längre?</p>
-	<a href="{{ url('app_detail') }}">Läs mer här</a>
+	<a href="{{ url('app_detail', {score: score.id}) }}">Läs mer här</a>
 {% else %}
 	<h1>Nu jävlar har du skitit i det blå skåpet</h1>
 	<p>
@@ -11,7 +11,7 @@
 		Du har förlorat {{ score.points }} poäng och får nu skämmas.
 	</p>
 	<h2>Vill du veta mer?</h2>
-	<p><a href="{{ url('app_detail') }}">Här kan du läsa mer om dina
+	<p><a href="{{ url('app_detail',{score: score.id}) }}">Här kan du läsa mer om dina
 			synder</a></p>
 
 {% endif %}
