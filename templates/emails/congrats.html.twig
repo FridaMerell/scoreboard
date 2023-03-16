@@ -3,7 +3,7 @@
 	<p>
 		Grattis till {{ score.points }} vackra, fantastiska poäng.
 		Ligger du ens på minus längre?</p>
-	<a href="https://påäng.fåvitsko.se{{ path('app_detail', {score:score.id}) }}">Läs mer här</a>
+	<a href="{{ url('app_detail') }}">Läs mer här</a>
 {% else %}
 	<h1>Nu jävlar har du skitit i det blå skåpet</h1>
 	<p>
